@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predice enfermedades</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="/">
+</head>
+<body>
+    <form action="https://script.google.com/macros/s/AKfycbyYZNEtMZ9fFpaPDIY-ZV8DEKQWopLDEu8F4xVmOi-Z8srd5rWn9IhPsRzLYbvbPR-djw/exec" name="Datos" method="post">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 offset-md-3">
+                    <div class="card mt-5 shadow">
+                        <div class="card-body">
+                            <h4 class="text-center">Red Neuronal Enfermedades cardiovasculares
+                    </div>
+    
+                    <div class="card mt-2 shadow">
+                        <div class="card-body">
+                            <label>Salud en general</label>
+                            <select id="saludg" name="General_Health" class="form-control mb-3">
+                                <option disabled selected>Elige una opción...</option>
+                                <option value=0>Mala</option>
+                                <option value=1>Regular</option>
+                                <option value=2>Buena</option>
+                                <option value=3>Muy buena</option>
+                                <option value=4>Excelente</option>
+                            </select>
+    
+                            <label>Indique el ultimo chequeo de un doctor</label>
+                            <select id="chequeo" name="Checkup" class="form-control mb-3">
+                                <option disabled selected>Elige una opción...</option>
+                                <option value=0>Nunca</option>
+                                <option value=1>Mas de 5 años</option>
+                                <option value=2>En los ultimos 5 años</option>
+                                <option value=3>Hace 2 años o menos</option>
+                                <option value=4>En el ultimo año</option>
+                            </select>
+    
+                            <label>Hace ejercicio</label>
+                            <select id="ejercicio" name="Exercise" class="form-control mb-3">
+                                <option disabled selected>Elige una opción...</option>
+                                <option value=0>No</option>
+                                <option value=1>Si</option>
+                            </select>
+    
+                            <label>Ha sufrido o sufre de cancer en la piel</label>
+                            <select id="cancerp" name="Skin_Cancer" class="form-control mb-3">
+                                <option disabled selected>Elige una opción...</option>
+                                <option value=0>No</option>
+                                <option value=1>Si</option>
+                            </select>
+    
+                            <label>Sufre o ha sufrido de otro tipo de cancer</label>
+                            <select id="cancer2" name="Other_Cancer" class="form-control mb-3">
+                                <option disabled selected>Elige una opción...</option>
+                                <option value=0>No</option>
+                                <option value=1>Si</option>
+                            </select>
+    
+                            <label>Sufre de algun trastorno depresivo</label>
+                            <select id="depresion" name="Depression" class="form-control mb-3">
+                                <option disabled selected>Elige una opción...</option>
+                                <option value=0>No</option>
+                                <option value=1>Si</option>
+                            </select>
+    
+                            <label>Sufre de diabetes</label>
+                            <select id="diabetes" name="Diabetes" class="form-control mb-3">
+                                <option disabled selected>Elige una opción...</option>
+                                <option value=0>No</option>
+                                <option value=1>Si</option>
+                            </select>
+    
+                            <label>Sufre de artritis</label>
+                            <select id="artritis" name="Arthritis" class="form-control mb-3">
+                                <option disabled selected>Elige una opción...</option>
+                                <option value=0>No</option>
+                                <option value=1>Si</option>
+                            </select>
+    
+                            <label>Genero</label>
+                            <select id="sexo" name="Sex" class="form-control mb-3">
+                                <option disabled selected>Elige una opción...</option>
+                                <option value=0>Mujer</option>
+                                <option value=1>Hombre</option>
+                            </select>
+    
+                            <label>Indique el rango de edad en el que se encuentra</label>
+                            <select id="edad" name="Age_Category" class="form-control mb-3">
+                                <option disabled selected>Elige una opción...</option>
+                                <option value=0>18-24</option>
+                                <option value=1>25-29</option>
+                                <option value=2>30-34</option>
+                                <option value=3>35-39</option>
+                                <option value=4>40-44</option>
+                                <option value=5>45-49</option>
+                                <option value=6>50-54</option>
+                                <option value=7>55-59</option>
+                                <option value=8>60-64</option>
+                                <option value=9>65-69</option>
+                                <option value=10>70-74</option>
+                                <option value=11>75-79</option>
+                                <option value=12>80+</option>
+                            </select>
+    
+                            <label>Altura "CM"</label>
+                            <input type="number" name="Height_(cm)" class="form-control mb-3" id="altura">
+    
+                            <label>Peso "KG"</label>
+                            <input type="number" name="Weight_(kg)" class="form-control mb-3" id="peso">
+    
+                            <label>IMC</label>
+                            <input type="number" name="BMI" class="form-control mb-3" id="imc">
+    
+                            <label>Tabaquismo</label>
+                            <select id="tabaquismo" name="Smoking_History" class="form-control mb-3">
+                                <option disabled selected>Elige una opción...</option>
+                                <option value=0>No</option>
+                                <option value=1>Si</option>
+                            </select>
+    
+                            <label>Consumo de alcohol</label>
+                            <input type="number" id="Alcohol" name="Alcohol_Consumption" class="form-control mb-3" >
+    
+                            <label>Consumo de frutas por día</label>
+                            <input type="number" name="Fruit_Consumption" class="form-control mb-3" id="frutas">
+    
+                            <label>Consumo de verduras verdes por día</label>
+                            <input type="number" name="Green_Vegetables_Consumption" class="form-control mb-3" id="vverdes">
+    
+    
+                            <div class="d-flex">
+                                <button class="submit" type="submit" id="enviar">Predecir</button>
+                                
+                                <h5 id="resultado" class="mx-5 mt-2"></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+    
+
+
+    <script src="/web_sites/inicio.js"></script>
+
+</body>
+</html>
