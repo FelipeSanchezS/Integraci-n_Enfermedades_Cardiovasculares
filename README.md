@@ -1,7 +1,48 @@
-# Integracion_Enfermedades_Cardiovasculares
+# Integración Enfermedades Cardiovasculares
 
-En el siguiente repositorio se encontrarán los archivos que fueron necesarios para ejecutar el proyecto, tales como las paginas Front, la red neuronal, la exportación del la red neuronal, el codigo de la API usada junto con evidencia de su ejecución.  
+Este repositorio contiene todos los archivos necesarios para la implementación y ejecución del proyecto, incluyendo:  
 
-El proyecto se basa en una red neuronal que se enfoca en predecir si una persona podria sufrur o no una enfermedad cardiovascular, esto con el fin de ayudar a que estas puedan se tratadas a tiempo y apoyar al area de la salud, esta red será exportada en formato TensorflowJS con el fin de ser implementadaa en un formulario hecho en base a una plantilla boostrap la cual solicita las mismas variables con las cuales esta fue entrenada. Esto arrojará la predicción y a su vez esta interconectada con una API con base en JS la cual envia los datos directamente a una hoja de calculo en el Drive, que se relaciona con un Dashboard que permite visualizar los daros ingresados por los usuarios, esto como a las personas de la salud con el fin de servir como apoyo en la toma de desiciones.  
+- **Frontend**: Archivos HTML y CSS basados en una plantilla Bootstrap para el formulario interactivo.  
+- **Red Neuronal**: Código de la red neuronal entrenada para la predicción de enfermedades cardiovasculares.  
+- **Exportación del Modelo**: Implementación y exportación de la red neuronal en formato TensorFlow.js para uso web.  
+- **API**: Código de la API desarrollada en JavaScript para la conexión de datos con Google Sheets.  
+- **Evidencias**: Material de soporte que documenta la ejecución del proyecto.  
 
-NOTA: Recordar que para poder ejecutar el codigo a nivel local se deben tener instaladas en el equipo librerias como pandas, matplotlib, tensorflow, nunpy, sklearn y seaborn. Dado que sin ellas no será posible ejecutar la red neuroranl. Por ultimo, actualizar las rutas de los archivos.  
+---
+
+## Descripción del Proyecto  
+
+El objetivo del proyecto es predecir la probabilidad de que una persona desarrolle enfermedades cardiovasculares, facilitando así la detección temprana y mejorando el apoyo al personal de salud en la toma de decisiones.  
+
+### Flujo del Proyecto  
+
+1. **Red Neuronal**:  
+   - Desarrollada utilizando TensorFlow, entrenada con un conjunto de datos relevantes y ajustada para un rendimiento óptimo.  
+   - Exportada en formato TensorFlow.js para su integración con aplicaciones web.  
+
+2. **Formulario Interactivo**:  
+   - Implementado en HTML y CSS usando Bootstrap.  
+   - Recopila las mismas variables utilizadas durante el entrenamiento del modelo.  
+
+3. **Predicción y Almacenamiento de Datos**:  
+   - Los datos ingresados en el formulario son procesados por la red neuronal para generar predicciones.  
+   - Los resultados, junto con los datos de entrada, son enviados a una hoja de cálculo en Google Drive mediante una API desarrollada en JavaScript.  
+
+4. **Dashboard**:  
+   - Visualiza los datos recolectados para facilitar el análisis y la toma de decisiones por parte del personal médico.  
+
+---
+
+## Requisitos de Instalación  
+
+Para ejecutar el proyecto a nivel local, es necesario instalar las siguientes dependencias:  
+
+- **Python Librerías**:  
+  ```bash
+  pip install pandas matplotlib tensorflow numpy scikit-learn seaborn
+
+Rutas:
+Asegúrate de actualizar las rutas de los archivos en el código para que coincidan con tu entorno local.
+Notas Adicionales
+Este proyecto está diseñado para facilitar la integración entre herramientas de Machine Learning y aplicaciones web.
+Se recomienda consultar la documentación de TensorFlow.js y Google Sheets API para comprender mejor las integraciones realizadas.
